@@ -1,0 +1,11 @@
+1.内部变量不能改变外部变量的值，但是可以通过加nonlocal关键字
+def f1():
+    num=111
+    def f2():
+        nonlocal num
+        num=222
+        print(num)
+    f2()
+    print(num)
+f1()
+2.

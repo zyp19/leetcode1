@@ -1,0 +1,77 @@
+回忆字典的知识：
+1.字典的定义：由键值对组成，key是不可变的，因此可以用数字、字符串、元组表示，但是key不可以用列表表示。字典中的一组键值对称为一个item，一个item
+使用{}花括号来表示。例如：d = {key1:value1, key2:value2, key3:value3}
+2.python中的字典使用哈希表来实现的，因此可以进行修改、删除、插入，具体实现方式要会。
+实例：
+2.1 修改字典中的元素
+>>> dict = {'name': 'runoob', 'likes': 123, 'url': 'www.runoob.com'}
+>>> dict['name'] = 'maomao'
+>>> print(dict)
+{'name': 'maomao', 'likes': 123, 'url': 'www.runoob.com'}
+2.2 删除字典中的元素（不会），即可以删除字典中的单一元素或者删除整个字典：
+>>> dict = {'name': 'runoob', 'likes': 123, 'url': 'www.runoob.com'}
+>>> del dict['name'] #删除单一的元素
+>>> dict.clear()     # 清空字典
+>>> del dict         # 删除字典
+3.字典键的特性
+字典值可以是任何的 python 对象，既可以是标准的对象，也可以是用户定义的，但键不行。
+两个重要的点需要记住：
+1）不允许同一个键出现两次。创建时如果同一个键被赋值两次，后一个值会被记住，如下实例：
+实例
+dict = {'Name': 'Runoob', 'Age': 7, 'Name': '小菜鸟'}
+print ("dict['Name']: ", dict['Name'])
+以上实例输出结果：
+dict['Name']:  小菜鸟
+2）键必须不可变，所以可以用数字，字符串或元组充当，而用列表就不行，如下实例：
+实例
+dict = {['Name']: 'Runoob', 'Age': 7}
+print ("dict['Name']: ", dict['Name'])
+以上实例输出结果：
+Traceback (most recent call last):
+  File "test.py", line 3, in <module>
+    dict = {['Name']: 'Runoob', 'Age': 7}
+TypeError: unhashable type: 'list'
+4.字典的内置API：
+1）len(dict)：计算字典元素个数，即键的总数。
+
+>>> dict = {'Name': 'Runoob', 'Age': 7, 'Class': 'First'}
+>>> len(dict)
+3
+2）str(dict)：输出字典，以可打印的字符串表示。
+
+>>> dict = {'Name': 'Runoob', 'Age': 7, 'Class': 'First'}
+>>> str(dict)
+"{'Name': 'Runoob', 'Class': 'First', 'Age': 7}"
+
+3）dict.get(key,0)函数:返回指定键的值，如果值不在字典中返回default值
+target ={}
+target[key] = target.get(key,0)
+
+4）dict.has_key(key):如果键在字典dict里返回true，否则返回false
+
+5）dict.keys()以列表返回一个字典所有的键
+
+6)dict.values():以列表返回字典中的所有值
+
+7）dict.setdefault(key, default=None)：和get()类似, 但如果键不存在于字典中，将会添加键并将值设为default
+
+8）dict.update(dict2)：把字典dict2的键/值对更新到dict里
+
+5.python中遍历字典的方式：
+第一种方式，只对键进行遍历
+d = {'name1' : 'pythontab', 'name2' : '.', 'name3' : 'com'}
+for key in d:
+    print(key, 'value:'dict[key])
+>>>
+name1 value : pythontab
+name2 value : .
+name3 value : com
+第二种方式，对键和值都进行遍历
+for key, value in d.items():
+    print (key, ' value : ', value)
+>>>
+name1 value : pythontab
+name2 value : .
+name3 value : com
+注意：字典元素的顺序通常没有定义。换句话说，迭代的时候，字典中的键和值都能保证被处理，但是处理顺序不确定。
+如果顺序很重要的话，可以将键值保存在单独的列表中，例如迭代前进行排序。
